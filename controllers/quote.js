@@ -491,6 +491,15 @@ exports.productRecommendation = async (request, reply) => {
     });
     const productDetailsArray = await Promise.all(productDetailsPromises);
     const flattenedProductDetails = productDetailsArray.flat();
+    flattenedProductDetails.push({ // Adding for Demo purpose
+        "idproduct": "69ddf27fb3154bc0ae98393525a6e6c1",
+        "product_name": "iSecure Plan",
+        "product_description": "Life’s journey made comfortable",
+        "premium_starts_at": 700,
+        "premium_starts": "@ ₹700 / Monthly",
+        "planType": "Term Plan",
+        "productID": 1016
+    })
     await event.insertEventTransaction(request.isValid);
     return reply
       .status(statusCodes.OK)
